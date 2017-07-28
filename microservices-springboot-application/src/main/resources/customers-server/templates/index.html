@@ -1,0 +1,43 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="header :: copy"></head>
+
+<body>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title">MicroServices Demo - Customer Server</h3>
+		</div>
+		<div class="panel-body">
+			<div class=" col-md-9 col-lg-9 ">
+				<table class="table table-user-information">
+					<thead class="thead-inverse">
+						<tr>
+							<th>S.No</th>
+							<th>Customer No</th>
+							<th>Customer Name</th>
+							<th>Customer LastName</th>
+							<th>Customer FirstName</th>
+							<th>Phone</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="customer,iterationStatus  : ${customers}">
+							<td th:text="${iterationStatus.count}">1</td>
+							<td><a
+								th:href="@{/customer/details(id=${customer.customernumber})}"><p
+										th:text="${customer.customernumber}"></p> </a></td>
+							<td th:text="${customer.customername}">Name</td>
+							<td th:text="${customer.contactlastname}">Last Name</td>
+							<td th:text="${customer.contactfirstname}">First Name</td>
+							<td th:text="${customer.phone}">Phone</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div th:replace="footer :: copy"></div>
+</body>
+</html>
